@@ -10,9 +10,11 @@ from .base import Base
 class User(Base):
     username: Mapped[str] = mapped_column(unique=True)
 
-    # foo: Mapped[int]
-    # bar: Mapped[int]
+    foo: Mapped[int]
+    bar: Mapped[int]
 
-    # __table_args__ = (
-    #     UniqueConstraint("foo", "bar")
-    # )
+    __table_args__ = (
+        (
+            UniqueConstraint("foo", "bar", name='unique_constraint_foo_bar'),
+        )
+    )
