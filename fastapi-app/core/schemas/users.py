@@ -4,17 +4,17 @@ from pydantic import (
     )
 
 
-class UsersSchema(BaseModel):
+class UserSchema(BaseModel):
     useraname: str
     foo: int
     bar: int
 
 
-class UsersCreate(UsersSchema):
+class UserCreate(UserSchema):
     pass
 
 
-class UsersReaf(UsersSchema):
+class UserRead(UserSchema):
     model_config = ConfigDict(
         from_attributes=True,
     )

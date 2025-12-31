@@ -13,7 +13,7 @@ from alembic import context
 
 from core.models import Base
 from core.config import settings
-
+print(Base.metadata.tables.keys())
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

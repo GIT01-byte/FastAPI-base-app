@@ -9,9 +9,9 @@ from core.models import Base
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("App is started")
+    print("[INFO]    App is started")
     yield
-    print('dispose db engine')
+    print('[INFO]    Dispose db engine')
     await db_helper.dispose()
 
 
@@ -20,7 +20,6 @@ app = FastAPI(
 )
 app.include_router(
     api_router,
-    prefix=settings.api.prefix,
 )
 
 
