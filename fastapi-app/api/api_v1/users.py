@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.config import settings
-from core.crud.users import get_all_users, create_user
+from core.crud.users import get_all_users, create_user # type: ignore
 from core.schemas import UserRead, UserCreate
 
 from core.models import db_helper
