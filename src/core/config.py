@@ -3,17 +3,17 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class RunConfig(BaseModel):
-    host: str = '0.0.0.0'
-    port: int = 8000
+    host: str = "127.0.0.1"
+    port: int = 8080
 
 
 class ApiV1Prefix(BaseModel):
-    prefix: str = '/v1'
-    users: str = '/users'
+    prefix: str = "/v1"
+    users: str = "/users"
 
 
 class ApiPrefix(BaseModel):
-    prefix: str = '/api'
+    prefix: str = "/api"
     v1: ApiV1Prefix = ApiV1Prefix()
 
 
@@ -23,7 +23,7 @@ class DatabaseSettings(BaseModel):
     echo_pool: bool = False
     pool_size: int = 50
     max_overflow: int = 10
-    
+
     naming_convention: dict[str, str] = {
         "ix": "ix_%(column_0_label)s",
         "uq": "uq_%(table_name)s_%(column_0_N_name)s",
@@ -31,6 +31,7 @@ class DatabaseSettings(BaseModel):
         "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
         "pk": "pk_%(table_name)s",
     }
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -43,5 +44,6 @@ class Settings(BaseSettings):
     api: ApiPrefix = ApiPrefix()
     db: DatabaseSettings
 
-settings = Settings() # type: ignore
+
+settings = Settings()  # type: ignore
 print(f"[INFO]    Using Database url: {settings.db.url}")
